@@ -6,33 +6,108 @@
     <title>Artists Wall</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="/src/style.css">
+    <style>
+        /* Gaya untuk efek pintu */
+        .door-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 50;
+        }
+
+        .door {
+            position: absolute;
+            width: 40%;
+            height: 80%;
+            background: #654321;
+            transition: transform 2s ease-in-out, opacity 1s ease-in-out;
+        }
+
+        .left-door {
+            left: 30%;
+            transform-origin: left center;
+        }
+
+        .right-door {
+            right: 30%;
+            transform-origin: right center;
+        }
+
+        /* Efek zoom pada pintu sebelum menghilang */
+        .zoom-out {
+            animation: zoomOut 2s ease-in-out forwards;
+        }
+
+        @keyframes zoomOut {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body class="flex items-center justify-center w-full bg-gray-900">
 
-    <div class="w-full h-[100vh] relative flex justify-evenly items-center gap-4 bg-gray-800 p-2 overflow-x-hidden">
+    <!-- Pintu awal -->
+    <div id="doorContainer" class="door-container">
+        <div id="leftDoor" class="door left-door"></div>
+        <div id="rightDoor" class="door right-door"></div>
+    </div>
+
+    <!-- Halaman utama -->
+    <div id="content" class="w-full h-[100vh] relative flex justify-evenly items-center gap-2 bg-gray-800 p-2 overflow-hidden hidden">
         <!-- Seniman di kiri -->
-        <div class="flex flex-col gap-2">
-            <img src="example.jpg" alt="Artist 1" class="artist-thumbnail border-4 border-yellow-500 rounded-lg shadow-xl">
-            <img src="example.jpg" alt="Artist 2" class="artist-thumbnail border-4 border-yellow-500 rounded-lg shadow-xl">
-            <img src="example.jpg" alt="Artist 3" class="artist-thumbnail border-4 border-yellow-500 rounded-lg shadow-xl">
+        <div class="flex flex-col">
+            <img src="example.jpg" alt="Artist 1" class="artist-thumbnail frame-border border-4 border-yellow-500 rounded-lg shadow-xl">
+            <img src="example.jpg" alt="Artist 2" class="artist-thumbnail frame-border border-4 border-yellow-500 rounded-lg shadow-xl">
+            <img src="example.jpg" alt="Artist 3" class="artist-thumbnail frame-border border-4 border-yellow-500 rounded-lg shadow-xl">
         </div>
 
         <!-- Video di tengah -->
         <div class="relative">
-            <video class="rounded-lg video-stream" autoplay loop controls>
-                <source src="example.mp4" type="video/mp4">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vnODfFJTLGg?si=FNTQapxATpuzGGyh&amp;controls=0&amp;start=233" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <!-- <video class="rounded-lg video-stream" autoplay loop controls>
+                <source src="https://youtu.be/vnODfFJTLGg?si=AUb_CFLLgHK8W5rv&t=233" type="video/mp4">
                 Your browser does not support the video tag.
-            </video>
+            </video> -->
         </div>
 
         <!-- Seniman di kanan -->
-        <div class="flex flex-col gap-2">
-            <img src="example.jpg" alt="Artist 4" class="artist-thumbnail border-4 border-yellow-500 rounded-lg shadow-xl">
-            <img src="example.jpg" alt="Artist 5" class="artist-thumbnail border-4 border-yellow-500 rounded-lg shadow-xl">
-            <img src="example.jpg" alt="Artist 6" class="artist-thumbnail border-4 border-yellow-500 rounded-lg shadow-xl">
+        <div class="flex flex-col">
+            <img src="example.jpg" alt="Artist 4" class="artist-thumbnail frame-border border-4 border-yellow-500 rounded-lg shadow-xl">
+            <img src="example.jpg" alt="Artist 5" class="artist-thumbnail frame-border border-4 border-yellow-500 rounded-lg shadow-xl">
+            <img src="example.jpg" alt="Artist 6" class="artist-thumbnail frame-border border-4 border-yellow-500 rounded-lg shadow-xl">
         </div>
     </div>
 
     <script src="/src/main.js"></script>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("leftDoor").style.transform = "rotateY(-90deg)";
+            document.getElementById("rightDoor").style.transform = "rotateY(90deg)";
+            
+            setTimeout(() => {
+                document.getElementById("doorContainer").classList.add("zoom-out");
+                
+                setTimeout(() => {
+                    document.getElementById("doorContainer").style.display = "none";
+                    document.getElementById("content").classList.remove("hidden");
+                }, 2000); // Setelah zoom selesai
+            }, 1500); // Tunggu setelah pintu terbuka
+        }, 2000);
+    </script>
+
 </body>
 </html>

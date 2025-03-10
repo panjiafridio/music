@@ -1,8 +1,12 @@
 .artist-thumbnail{
-  width: 16vw;
-  height: 30vh;
+  width: 15vw;
+  height: 35vh;
 }
 .video-stream{
   width: 40vw;
   height: 70vh;
+}
+.frame-border {
+  border: 30px solid transparent; /* Atur ketebalan border */
+  border-image: url('../public/border.png') 20% stretch; /* Ganti dengan path gambarmu */
 }
