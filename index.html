@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists Wall</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="flex items-center justify-center w-full bg-gray-900">
+
+    <div class="w-full h-[100vh] relative flex justify-evenly items-center gap-4 bg-gray-800 p-2 overflow-x-hidden">
+        <!-- Seniman di kiri -->
+        <div class="flex flex-col gap-2">
+            <img src="example.jpg" alt="Artist 1" class="artist-thumbnail">
+            <img src="example.jpg" alt="Artist 2" class="artist-thumbnail">
+            <img src="example.jpg" alt="Artist 3" class="artist-thumbnail">
+        </div>
+
+        <!-- Video di tengah -->
+        <div class="relative">
+            <video class="rounded-lg video-stream" autoplay loop controls>
+                <source src="example.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Seniman di kanan -->
+        <div class="flex flex-col gap-2">
+            <img src="example.jpg" alt="Artist 4" class="artist-thumbnail">
+            <img src="example.jpg" alt="Artist 5" class="artist-thumbnail">
+            <img src="example.jpg" alt="Artist 6" class="artist-thumbnail">
+        </div>
+    </div>
+
+    <script src="/src/main.js"></script>
+</body>
+</html>
