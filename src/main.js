@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Tambahkan event listener ke masing-masing gambar
   artistImages.forEach((img, index) => {
-      img.classList.add("w-20", "h-20", "rounded-full", "cursor-pointer", "hover:scale-110", "transition-transform", "duration-300");
+      img.classList.add("cursor-pointer", "hover:scale-110", "transition-transform", "duration-300");
       img.addEventListener("click", () => {
           window.open(artistLinks[index], "_blank"); // Buka link di tab baru
       });
