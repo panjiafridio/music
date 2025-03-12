@@ -8,5 +8,5 @@
 }
 .frame-border {
   border: 30px solid transparent; /* Atur ketebalan border */
-  border-image: url('../public/border.png') 20% stretch; /* Ganti dengan path gambarmu */
+  border-image: url('/border.png') 20% stretch; /* Ganti dengan path gambarmu */
 }
