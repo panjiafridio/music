@@ -1,6 +1,14 @@
+@import "tailwindcss";
+
 .artist-thumbnail{
   width: 15vw;
   height: 35vh;
+}
+/* Tablet (Ukuran layar maks 768px) */
+@media (max-width: 768px) {
+  .artist-thumbnail {
+      width: 80%;
+  }
 }
 .video-stream{
   width: 40vw;
@@ -9,4 +17,70 @@
 .frame-border {
   border: 30px solid transparent; /* Atur ketebalan border */
   border-image: url('/border.png') 20% stretch; /* Ganti dengan path gambarmu */
+}
+
+/* Animation */
+/* Gaya untuk efek pintu */
+.door-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 50;
+  /* background-color: rgba(0, 0, 0, 0.9); */
+}
+
+.door {
+  position: absolute;
+  width: 25%;
+  height: 80%;
+  background-color: #f08833;
+  transition: transform 2s ease-in-out;
+}
+@media (max-width: 768px) {
+  .door {
+    width: 50%;
+  }
+}
+
+.left-door {
+  left: 37%;
+  transform-origin: left center;
+}
+
+.right-door {
+  right: 37%;
+  transform-origin: right center;
+}
+
+/* Animasi zoom pada pintu dan kemunculan halaman utama secara bersamaan */
+.zoom-out-door {
+  animation: zoomOutDoor 1.5s ease-in-out forwards;
+}
+
+@keyframes zoomOutDoor {
+  0% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(5);
+      opacity: 0;
+  }
+}
+
+/* Halaman utama awalnya kecil, lalu membesar */
+.content-container {
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+}
+
+.content-show {
+  transform: scale(1);
+  opacity: 1;
 }
